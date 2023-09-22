@@ -2,6 +2,7 @@
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpFoundation\Response;
 
 if (!function_exists('apiResponse')) {
     /**
@@ -34,6 +35,6 @@ if (!function_exists('apiException')) {
     function apiException($e): JsonResponse
     {
         Log::debug("\nCode: " . $e->getCode() . "\nMessage: " . $e->getMessage() . "\nLine: " . $e->getLine());
-        return apiResponse(false, 'Something went wrong!', [], 500);
+        return apiResponse(false, 'Something went wrong!', [], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }
