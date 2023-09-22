@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\{ProductController};
+use App\Http\Controllers\Auth\{GuestController};
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\Auth\{GuestController};
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +17,6 @@ use \App\Http\Controllers\Auth\{GuestController};
 Route::post('register', [GuestController::class, 'register']);
 Route::post('login', [GuestController::class, 'login']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->group(function () {
+    Route::apiResource('products', ProductController::class)->except('show');
 });
