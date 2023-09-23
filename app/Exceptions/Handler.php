@@ -27,4 +27,12 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, \Exception|Throwable $exception)
+    {
+        if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
+            return apiResponse(false, 'unauthorized', [], 401);
+        }
+        return parent::render($request, $exception);
+    }
 }
