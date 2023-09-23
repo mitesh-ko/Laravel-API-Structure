@@ -17,12 +17,16 @@ class ProductController extends Controller
         $products = Product::where(function ($q) use ($request) {
             if ($request->name)
                 $q->where('name', 'like', '%' . $request->name . '%');
+
+            if($request->price_from && $request->price_to)
+                $q->whereBetween('price', [$request->price_from, $request->price_to]);
+
         })->paginate(config('constants.pagination'));
 
         if ($products->count() > 0)
             return apiResponse(true, __('Products list.'), $products);
 
-        return apiResponse(false, __('Products not available.'), [], Response::HTTP_NOT_FOUND);
+        return apiResponse(false, __('Products not available or change the filter.'), [], Response::HTTP_NOT_FOUND);
     }
 
     /**
