@@ -1,0 +1,548 @@
+{
+	"info": {
+		"_postman_id": "cafa4cea-85ee-4fee-a81d-53a98c064de0",
+		"name": "EquityPandit Pratical Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17467018"
+	},
+	"item": [
+		{
+			"name": "Guest",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// If the status code is 200, extract the token and set it as a collection variable\r",
+									"if (pm.response.code === 200) {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var token = jsonData.data.token;\r",
+									"    var email = jsonData.data.email;\r",
+									"    pm.collectionVariables.set(\"email\", email);\r",
+									"    pm.collectionVariables.set(\"token\", token);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "{{$randomUserName}}",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "{{$randomExampleEmail}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "{{password}}",
+									"type": "text"
+								},
+								{
+									"key": "profile",
+									"value": "",
+									"description": "Send profile image is easy with form-data",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{origin}}/register",
+							"host": [
+								"{{origin}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "{{$randomUserName}}",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "{{$randomExampleEmail}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Pa$$word",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "Pa$$word",
+											"type": "text"
+										},
+										{
+											"key": "profile",
+											"value": "",
+											"description": "Send profile image is easy with form-data",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{origin}}/register",
+									"host": [
+										"{{origin}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Your account created successfully.\",\n    \"data\": {\n        \"name\": \"Jovany39\",\n        \"email\": \"Juliet60@example.net\",\n        \"updated_at\": \"2023-09-22T15:35:34.000000Z\",\n        \"created_at\": \"2023-09-22T15:35:34.000000Z\",\n        \"id\": 4,\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTA3YjIyZDdlMjdlOGEyYTE0MTk0OGRiMjY0NzQ4MThiM2NkNWM1NDhiMWM3NmI1OWVjYjJjZmM1ZGQxODgxYjM4Y2VjN2IwOTg0OWFiMzAiLCJpYXQiOjE2OTUzOTY5MzYuNjEyNjAxLCJuYmYiOjE2OTUzOTY5MzYuNjEyNjA1LCJleHAiOjE3MjcwMTkzMzYuMTcxNzUyLCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.mhSFV5tdkPs7xcDizhBY9g4ixB9QhjhkUqJxWomOOpuDQOmcT9Yn770Zj0MRooGTfCIW1SfxRV2Mf_mo0UzClow6J_5ohiZRxyr6P5_Y7q54vjmxrKZGakkFB_lKBzWQ4ldz4A6eXi6yeWr6-Q4e7agBx4U64FEEEue4MF4RUJVas3UyFrzpLeMlmhv1TVSqHAaANIJceLwXiY8qCG0hC_EgUEqtOE6zGbcksv04YesLzY4zs_R73H6ETILMWP-96CXsFJqNM0Pl1o2FixzcHB6HN8GU15jH8ts3hbN_llxKqvunCQw28ir60dEeFlGcXGcphcg_T9o67p3kbvuImG69QgEM4DMqxHmKwrTcy13ruHBTlSP2jhG6iNXC5TyKobG-S2IpwTWnuVFHu-guz8ITz_lMhzNu214FMuU6pnuOvVmONBBvItUEJYVgUOAqo6ei3alKwWjEi27w3HvfVDcyPp-KYw9zEc12bWa0Qqekz7MOcRb82TW2CEX-eO4g6VRuYD7cefyfdISvV_dSFzbshS6xKR6tVY-QMPWsIYd0yrAx992zJgRBSfyKZzPRRG3hsBtdBfQcbuk7gZMikPfHDWaCCST5puzz-zoLOEbGb_iN5UdYz17M0r4bYG_YdVlDhUNr5GHEKJ1XmUpo5viemna-Zoy6d-O5Cj12a08\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// If the status code is 200, extract the token and set it as a collection variable\r",
+									"if (pm.response.code === 200) {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var token = jsonData.data.token;\r",
+									"    var email = jsonData.data.email;\r",
+									"    pm.collectionVariables.set(\"email\", email);\r",
+									"    pm.collectionVariables.set(\"token\", token);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{origin}}/login",
+							"host": [
+								"{{origin}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "Lavina_Zulauf51@example.net",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Pa$$word",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{origin}}/login",
+									"host": [
+										"{{origin}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"status\": true,\r\n    \"message\": \"User logged in successfully.\",\r\n    \"data\": {\r\n        \"id\": 44,\r\n        \"name\": \"Estefania.Kihn75\",\r\n        \"email\": \"Lavina_Zulauf51@example.net\",\r\n        \"email_verified_at\": null,\r\n        \"created_at\": \"2023-09-22T19:29:09.000000Z\",\r\n        \"updated_at\": \"2023-09-22T19:29:09.000000Z\",\r\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzIzZjc3NmM1MDhiZjk1Zjk5OWYwMDdkNzFkNGI4MjAzZDI4OTRlN2JmNTE4Yjg4OTkwMWQ0OGVlMWJhZmFlZGE1MjE5NzI3YTgxZTVmMTUiLCJpYXQiOjE2OTU0MTA5NzAuOTEzMDMsIm5iZiI6MTY5NTQxMDk3MC45MTMwMzQsImV4cCI6MTcyNzAzMzM3MC44OTI2MjcsInN1YiI6IjQ0Iiwic2NvcGVzIjpbXX0.qaByuCOUnewsC3eUajh2AOWhN6vbu9S-yLBUvdxlPkIjxWnmOx0dHSTcZ8-6QvY5xs95sTR7foCw_g90FnkaXkMhIypXlc0-d9CRliv7cxw0X3UzaElyMUkKwfsTIYleEUwNYASPEcIRqxoOS0utFkfLGOmDipXezGz4vTdiLmKCoKZfu0U5E8jDmvURM3wYPpHD-ALnaVELHOHxlJra8aLq0P7p18eUab8TZqSY9hf5-XSt7T2JiZtZxBW1x9GdCzWXbGhTmYcq-9fKI-KEg1Ts6d-c0TrYaCn8EbRUT9KbseiVQULPnxbXMdGoTBMuMjS3a2fNFlEn8QrPHXNolFEZgtFt1EGd2BK3c5O3Hjn2Cdbk88-6tcQLZjBIdts07cD7M9zvfvONfdJ07GKP6tsvyEfyahWlGDkPMnXfzpPbM2qfGNKD8_1r0kESVEr9km4yq8ikfh0zjNQ5gPiSUm3ubXMA_jup0wwElkQSol2i1xj1OsATrLf4IhtyY8_b0AHx-N_1peAqEjeqqpmEB95UgQYS8U7wf2Faz4c-e7pTz7od2ctBTZnwnG-VK7WMxuiHRPzUoQO5o4PEfoOReg1e8SeMdA_8HdpXPes2B_b2VVZkipqEJiwQ9qABDUZpOg08IG30KUfWsk44mWHwlTxE4vjSHgXJQqdNXBPCd5o\"\r\n    }\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{origin}}/products?price_from=5&price_to=50000",
+							"host": [
+								"{{origin}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "dne",
+									"disabled": true
+								},
+								{
+									"key": "price_from",
+									"value": "5"
+								},
+								{
+									"key": "price_to",
+									"value": "50000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// If the status code is 200, extract the product id and set it as a collection variable\r",
+									"if (pm.response.code === 201) {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var productId = jsonData.data.id;\r",
+									"    pm.collectionVariables.set(\"product_id\", productId);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "{{$randomProductName}}",
+									"type": "text"
+								},
+								{
+									"key": "desc",
+									"value": "{{$randomLoremText}}",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "{{$randomPrice}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{origin}}/products",
+							"host": [
+								"{{origin}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomProductName}}\",\r\n    \"desc\": \"{{$randomLoremText}}\",\r\n    \"price\": \"{{$randomPrice}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{origin}}/products/{{product_id}}",
+							"host": [
+								"{{origin}}"
+							],
+							"path": [
+								"products",
+								"{{product_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{origin}}/products/{{product_id}}",
+							"host": [
+								"{{origin}}"
+							],
+							"path": [
+								"products",
+								"{{product_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Add to cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_id",
+									"value": "{{product_id}}",
+									"type": "text"
+								},
+								{
+									"key": "qty",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{origin}}/add-to-cart",
+							"host": [
+								"{{origin}}"
+							],
+							"path": [
+								"add-to-cart"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "Initiate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// If the status code is 200, extract the token and set it as a collection variable\r",
+									"if (pm.response.code === 200) {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var payment_id = jsonData.data.email;\r",
+									"    pm.collectionVariables.set(\"payment_id\", payment_id);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{origin}}/payment/initiate",
+							"host": [
+								"{{origin}}"
+							],
+							"path": [
+								"payment",
+								"initiate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Success",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{origin}}/payment/success",
+							"host": [
+								"{{origin}}"
+							],
+							"path": [
+								"payment",
+								"success"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Failed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{origin}}/payment/failed",
+							"host": [
+								"{{origin}}"
+							],
+							"path": [
+								"payment",
+								"failed"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "origin",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		},
+		{
+			"key": "email",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "Pa$$word",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "product_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "payment_id",
+			"value": ""
+		}
+	]
+}
