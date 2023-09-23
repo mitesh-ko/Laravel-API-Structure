@@ -30,7 +30,7 @@ class GuestController extends Controller
             ]);
 
             $user['token'] = $user->createToken($user->email)->accessToken;
-            return apiResponse(true, __('Your account created successfully.'), $user);
+            return apiResponse(true, __('Your account created successfully.'), $user, Response::HTTP_CREATED);
         } catch (Exception $e) {
             return apiException($e);
         }
