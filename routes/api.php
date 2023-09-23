@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{ProductController};
+use App\Http\Controllers\{CartController, PaymentController, ProductController};
 use App\Http\Controllers\Auth\{GuestController};
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +19,11 @@ Route::post('login', [GuestController::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('products', ProductController::class)->except('show');
+    Route::post('add-to-cart', [CartController::class, 'addToCart']);
+
+    Route::prefix('payment')->group(function () {
+        Route::get('initiate', [PaymentController::class, 'initiate']);
+        Route::get('success', [PaymentController::class, 'success']);
+        Route::get('failed', [PaymentController::class, 'failed']);
+    });
 });
