@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "cafa4cea-85ee-4fee-a81d-53a98c064de0",
-		"name": "EquityPandit Pratical Test",
+		"name": "EquityPandit Practical Test",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "17467018"
 	},
@@ -236,17 +236,10 @@
 						"header": [],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								}
-							]
+							"formdata": []
 						},
 						"url": {
-							"raw": "{{origin}}/products?price_from=5&price_to=50000",
+							"raw": "{{origin}}/products",
 							"host": [
 								"{{origin}}"
 							],
@@ -261,11 +254,13 @@
 								},
 								{
 									"key": "price_from",
-									"value": "5"
+									"value": "5",
+									"disabled": true
 								},
 								{
 									"key": "price_to",
-									"value": "50000"
+									"value": "50000",
+									"disabled": true
 								}
 							]
 						}
