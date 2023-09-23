@@ -50,7 +50,7 @@ class ProductController extends Controller
         }
 
         if ($product->update())
-            return apiResponse(true, __('Product updated successfully.'), $product, Response::HTTP_CREATED);
+            return apiResponse(true, __('Product updated successfully.'), $product);
 
         return apiResponse(true, __('Unable to updated product.'), $product, Response::HTTP_INTERNAL_SERVER_ERROR);
     }
